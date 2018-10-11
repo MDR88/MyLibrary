@@ -49,8 +49,11 @@ namespace MyLibrary.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["LibraryId"] = new SelectList(_context.Library, "LibraryId", "Name");
-            return View();
+            //ViewData["LibraryId"] = new SelectList(_context.Library, "LibraryId", "Name");
+            //return View();
+
+            BookCreateViewModel bookCreateViewModel = new BookCreateViewModel(_context);
+            return View(bookCreateViewModel);
         }
 
         // POST: Books/Create
@@ -66,8 +69,12 @@ namespace MyLibrary.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LibraryId"] = new SelectList(_context.Library, "LibraryId", "LibraryId", book.LibraryId);
-            return View(book);
+            //ViewData["LibraryId"] = new SelectList(_context.Library, "LibraryId", "LibraryId", book.LibraryId);
+            //return View(book);
+
+            BookCreateViewModel bookCreateViewModel = new BookCreateViewModel(_context);
+            bookCreateViewModel.Book = book;
+            return View(bookCreateViewModel);
         }
 
         // GET: Books/Edit/5
