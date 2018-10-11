@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyLibrary.ViewModels
 {
-    public class LibraryCreateViewModel
+    public class LibraryEditViewModel
     {
         public Library Library { get; set; }
 
